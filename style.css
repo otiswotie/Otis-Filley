@@ -682,4 +682,416 @@ button:focus,
 .external-link {
     font-weight: 500;
     color: var(--color-accent);
+}/* ==========================================================================
+   ENHANCED CSS - ADDITIONAL STYLES FOR RECREATED PORTFOLIO
+   Add these styles to your existing style.css
+   ========================================================================== */
+
+/* Project Subtitle */
+.project-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-black-60);
+    font-style: italic;
+    margin: 10px 0 20px 0;
+}
+
+/* Project Summary Links */
+.project-summary {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.read-more {
+    font-weight: 500;
+    color: var(--color-black) !important;
+    border-bottom: 1px solid var(--color-black-40) !important;
+    transition: all 0.3s ease;
+}
+
+.read-more:hover {
+    border-bottom-color: var(--color-black) !important;
+    transform: translateX(3px);
+}
+
+.external-link {
+    font-weight: 500;
+    color: var(--color-accent) !important;
+    border-bottom: 1px solid var(--color-accent) !important;
+    transition: all 0.3s ease;
+}
+
+.external-link:hover {
+    opacity: 0.8;
+    transform: translateX(3px);
+}
+
+/* Current Projects Section */
+.current-projects {
+    margin-top: 30px;
+}
+
+.current-project-item {
+    padding: 20px;
+    background: rgba(0,0,0,0.02);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 3px solid var(--color-black-25);
+}
+
+.current-project-item h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--color-black-85);
+}
+
+.current-project-item p {
+    font-size: 14px;
+    color: var(--color-black-60);
+    margin-bottom: 10px;
+}
+
+.status {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    background: rgba(0, 100, 225, 0.1);
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
+/* Enhanced Project Credits */
+.project-credits {
+    font-size: 14px;
+    color: var(--color-black-60);
+    margin: 15px 0 20px 0;
+    padding: 15px 0;
+    border-top: 1px solid var(--color-black-10);
+    border-bottom: 1px solid var(--color-black-10);
+}
+
+.project-credits strong {
+    color: var(--color-black-75);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.project-credits a {
+    color: var(--color-black-60);
+    border-bottom: 1px solid var(--color-black-25);
+}
+
+.project-credits a:hover {
+    color: var(--color-black);
+    border-bottom-color: var(--color-black);
+}
+
+/* Enhanced Image Grid */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.image-grid img {
+    margin: 0;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* Project Navigation */
+.project-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0 20px 0;
+    padding: 20px 0;
+    border-top: 1px solid var(--color-black-10);
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--color-black-75) !important;
+    border: none !important;
+    padding: 10px 15px;
+    background: rgba(0,0,0,0.05);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background: rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+}
+
+/* Contact Form Styles */
+.contact-form {
+    max-width: 500px;
+    margin-top: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--color-black-75);
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--color-black-25);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    background: white;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submit-button {
+    background: var(--color-black-85);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+    background: var(--color-black);
+    transform: translateY(-1px);
+}
+
+.form-note {
+    font-size: 12px;
+    color: var(--color-black-60);
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+/* Contact Methods */
+.contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.contact-item h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--color-black-85);
+}
+
+.contact-item p {
+    font-size: 14px;
+    color: var(--color-black-60);
+    margin: 0;
+}
+
+.contact-item a {
+    color: var(--color-black-75);
+    border-bottom: 1px solid var(--color-black-25);
+}
+
+.contact-item a:hover {
+    color: var(--color-black);
+    border-bottom-color: var(--color-black);
+}
+
+/* Service Items */
+.service-item {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-black-05);
+}
+
+.service-item:last-child {
+    border-bottom: none;
+}
+
+.service-item h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--color-black-85);
+}
+
+.service-item p {
+    color: var(--color-black-60);
+    margin: 0;
+}
+
+/* Testimonials */
+.testimonial {
+    border-left: 3px solid var(--color-black-25);
+    padding-left: 20px;
+    margin: 30px 0;
+    font-style: italic;
+    color: var(--color-black-75);
+}
+
+.testimonial cite {
+    display: block;
+    margin-top: 15px;
+    font-style: normal;
+    font-size: 14px;
+    color: var(--color-black-60);
+    font-weight: 500;
+}
+
+/* Publication Items */
+.publication-item {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-black-05);
+}
+
+.publication-item:last-child {
+    border-bottom: none;
+}
+
+.publication-item h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--color-black-85);
+}
+
+.publication-item p {
+    color: var(--color-black-60);
+    margin-bottom: 10px;
+}
+
+/* Bio Section */
+.bio-section {
+    margin-top: 40px;
+}
+
+.bio-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.bio-section p {
+    margin-bottom: 20px;
+}
+
+/* Approach Grid */
+.approach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.approach-item {
+    padding: 25px;
+    background: rgba(0,0,0,0.02);
+    border-radius: 8px;
+}
+
+.approach-item h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: var(--color-black-85);
+}
+
+.approach-item p {
+    font-size: 14px;
+    color: var(--color-black-60);
+    margin: 0;
+}
+
+/* Finding Items (for project detail pages) */
+.finding-item {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: rgba(0,0,0,0.02);
+    border-radius: 8px;
+    border-left: 3px solid var(--color-accent);
+}
+
+.finding-item h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--color-black-85);
+}
+
+.finding-item p {
+    font-size: 14px;
+    color: var(--color-black-60);
+    margin: 0;
+}
+
+/* Mobile Responsive Updates */
+@media (max-width: 768px) {
+    .project-summary {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .contact-methods {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .approach-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .project-navigation {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-link {
+        text-align: center;
+        width: 100%;
+    }
+    
+    .image-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .current-projects {
+        margin-top: 20px;
+    }
+    
+    .contact-form {
+        max-width: 100%;
+    }
 }
