@@ -1,0 +1,632 @@
+/* ==========================================================================
+   OTIS FILLEY PORTFOLIO - COMPLETE CSS
+   DS+R Inspired Environmental Journalism Portfolio
+   ========================================================================== */
+
+/* ==========================================================================
+   1. RESET & BASE STYLES
+   ========================================================================== */
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-anchor: none;
+    min-height: var(--viewport-height, 100vh);
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    --mobile-scale: 1.3;
+    --mobile-padding-offset: 0.9;
+    font-size: var(--base-size, 16px);
+    touch-action: manipulation;
+    position: relative;
+}
+
+html.mobile {
+    font-size: calc(var(--base-size) * var(--mobile-scale));
+}
+
+body {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: var(--viewport-height, 100vh);
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #000;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+}
+
+/* ==========================================================================
+   2. COLOR SYSTEM
+   ========================================================================== */
+
+:root {
+    --color-black: #000;
+    --color-black-85: rgba(0, 0, 0, 0.85);
+    --color-black-75: rgba(0, 0, 0, 0.75);
+    --color-black-60: rgba(0, 0, 0, 0.6);
+    --color-black-40: rgba(0, 0, 0, 0.4);
+    --color-black-25: rgba(0, 0, 0, 0.25);
+    --color-black-15: rgba(0, 0, 0, 0.15);
+    --color-black-10: rgba(0, 0, 0, 0.1);
+    --color-black-05: rgba(0, 0, 0, 0.05);
+    --color-white: #ffffff;
+    --color-accent: #0064E1;
+    --color-accent-alt: #F68219;
+}
+
+body {
+    --swatch-1: var(--color-black-85);
+    --swatch-2: var(--color-black-75);
+    --swatch-3: var(--color-black-60);
+    --swatch-4: var(--color-black-40);
+    --swatch-5: var(--color-black-25);
+}
+
+/* ==========================================================================
+   3. PAGE FOLD EFFECT
+   ========================================================================== */
+
+.page-container {
+    position: relative;
+    display: flex;
+    min-height: 100vh;
+}
+
+.column-left {
+    flex: 1;
+    background: linear-gradient(to right, 
+        rgba(255,255,255,1) 0%, 
+        rgba(255,255,255,1) 85%, 
+        rgba(0,0,0,0.02) 95%, 
+        rgba(0,0,0,0.05) 100%
+    );
+}
+
+.column-right {
+    flex: 1;
+    background: linear-gradient(to left, 
+        rgba(255,255,255,1) 0%, 
+        rgba(255,255,255,1) 85%, 
+        rgba(0,0,0,0.02) 95%, 
+        rgba(0,0,0,0.05) 100%
+    );
+}
+
+.fold-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom,
+        rgba(0,0,0,0.1) 0%,
+        rgba(0,0,0,0.2) 20%,
+        rgba(0,0,0,0.25) 50%,
+        rgba(0,0,0,0.2) 80%,
+        rgba(0,0,0,0.1) 100%
+    );
+    transform: translateX(-50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.fold-line::before {
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: linear-gradient(to right,
+        rgba(0,0,0,0.05) 0%,
+        rgba(0,0,0,0.15) 50%,
+        rgba(0,0,0,0.05) 100%
+    );
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   4. TYPOGRAPHY SYSTEM
+   ========================================================================== */
+
+/* Main Headings */
+h1, h2, .project-title {
+    font-family: "Neue Haas Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 500;
+    color: var(--color-black);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 20px 0;
+}
+
+h1 {
+    font-size: clamp(3rem, 6vw, 5rem);
+}
+
+h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* Body Text */
+p, bodycopy {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--color-black-75);
+    margin: 0 0 20px 0;
+    max-width: 65ch;
+}
+
+/* Lead Paragraph */
+.lead {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-black-85);
+    margin-bottom: 30px;
+}
+
+/* Small Text */
+small, .caption {
+    font-size: 12px;
+    color: var(--color-black-60);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   5. PROJECT STRUCTURE
+   ========================================================================== */
+
+/* Main Content Container */
+.page-content {
+    padding: 60px 40px;
+    max-width: none;
+    position: relative;
+    z-index: 2;
+}
+
+/* Project Sections */
+.project-section {
+    margin-bottom: 80px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--color-black-10);
+    position: relative;
+}
+
+.project-section:last-child {
+    border-bottom: none;
+    margin-bottom: 40px;
+}
+
+/* Featured Project */
+.project-section.featured {
+    background: linear-gradient(135deg, 
+        rgba(0,0,0,0.02) 0%, 
+        rgba(0,0,0,0.05) 100%);
+    padding: 40px;
+    border-radius: 12px;
+    margin-bottom: 100px;
+    border: 1px solid var(--color-black-05);
+}
+
+.project-section.featured h1,
+.project-section.featured h2 {
+    font-size: clamp(4rem, 8vw, 7rem);
+    margin-bottom: 30px;
+}
+
+/* Project Categories */
+.project-category {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-black-60);
+    margin-bottom: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Project Metadata */
+.project-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    padding: 15px 0;
+    border-top: 1px solid var(--color-black-10);
+    font-size: 12px;
+    color: var(--color-black-60);
+}
+
+.project-year {
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+.project-medium {
+    font-style: italic;
+}
+
+.project-credits {
+    font-size: 14px;
+    color: var(--color-black-60);
+    margin: 15px 0;
+    padding: 10px 0;
+    border-top: 1px solid var(--color-black-10);
+}
+
+/* ==========================================================================
+   6. IMAGE SYSTEM
+   ========================================================================== */
+
+img {
+    width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 4px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+img:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+/* Featured Images */
+.project-section.featured img:first-of-type {
+    max-height: 500px;
+    object-fit: cover;
+    margin-bottom: 30px;
+}
+
+/* Image Grid */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.image-grid img {
+    margin: 0;
+    height: 250px;
+    object-fit: cover;
+}
+
+/* ==========================================================================
+   7. LINKS & INTERACTIONS
+   ========================================================================== */
+
+a {
+    color: var(--color-black);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-black-25);
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    border-bottom-color: var(--color-black);
+    opacity: 0.8;
+}
+
+a:active {
+    opacity: 0.7;
+}
+
+/* External Link Indicators */
+a[href*="vimeo"]::after {
+    content: " ↗ Vimeo";
+    font-size: 0.85em;
+    opacity: 0.7;
+    font-weight: 500;
+}
+
+a[href*="guardian"]::after {
+    content: " ↗ The Guardian";
+    font-size: 0.85em;
+    opacity: 0.7;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   8. SITE NAVIGATION (Your Existing Menu)
+   ========================================================================== */
+
+/* Site Menu Button */
+#site_menu_button {
+    color: var(--color-black-75);
+    line-height: 1;
+    font-size: 30px;
+    padding: 6px;
+    background: transparent;
+    position: fixed;
+    right: 2rem;
+    top: 2rem;
+    z-index: 1000;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+#site_menu_button:hover {
+    opacity: 0.7;
+}
+
+#site_menu_button.custom_icon {
+    width: 40px;
+    height: auto;
+}
+
+#site_menu_button.active {
+    opacity: 0.5;
+}
+
+/* Site Menu */
+#site_menu {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(10px);
+    font-size: 20px;
+    font-weight: 400;
+    padding: 60px 30px 90px 30px;
+    max-width: 400px;
+    min-width: 300px;
+    text-align: left;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 999;
+    transform: translateX(100%);
+    transition: transform 0.4s ease;
+    overflow-y: auto;
+}
+
+#site_menu.active {
+    transform: translateX(0);
+}
+
+#site_menu .menu-content {
+    display: flex;
+    flex-direction: column;
+}
+
+#site_menu .page-link a,
+#site_menu .set-link a {
+    color: rgba(255, 255, 255, 0.75);
+    border: none;
+    display: block;
+    padding: 12px 0;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+#site_menu .page-link a:hover,
+#site_menu .set-link a:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+#site_menu .set-link > a {
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: bold;
+}
+
+#site_menu a:active {
+    opacity: .7;
+}
+
+#site_menu a.active {
+    opacity: .4;
+}
+
+#site_menu .close {
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1;
+    font-size: 45px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    background: none;
+    border: none;
+}
+
+#site_menu .close:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#site_menu .break {
+    height: 28px;
+}
+
+#site_menu .indent {
+    margin-left: 28px;
+}
+
+/* ==========================================================================
+   9. ACKNOWLEDGMENT
+   ========================================================================== */
+
+.acknowledgment {
+    font-size: 12px;
+    color: var(--color-black-60);
+    line-height: 1.7;
+    font-style: italic;
+    padding: 30px 0;
+    border-top: 2px solid var(--color-black-10);
+    margin-top: 80px;
+    max-width: none;
+}
+
+/* ==========================================================================
+   10. ANIMATIONS
+   ========================================================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-section {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.project-section:nth-child(1) { animation-delay: 0.1s; }
+.project-section:nth-child(2) { animation-delay: 0.2s; }
+.project-section:nth-child(3) { animation-delay: 0.3s; }
+.project-section:nth-child(4) { animation-delay: 0.4s; }
+.project-section:nth-child(5) { animation-delay: 0.5s; }
+
+/* ==========================================================================
+   11. MOBILE RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* Hide fold effect on mobile */
+    .fold-line {
+        display: none;
+    }
+    
+    .column-left,
+    .column-right {
+        background: white !important;
+    }
+    
+    .page-container {
+        flex-direction: column;
+    }
+    
+    /* Mobile layout adjustments */
+    .page-content {
+        padding: 40px 20px;
+    }
+    
+    .project-section {
+        margin-bottom: 60px;
+        padding-bottom: 40px;
+    }
+    
+    .project-section.featured {
+        padding: 25px;
+        margin-bottom: 60px;
+    }
+    
+    .project-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .image-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Mobile menu adjustments */
+    #site_menu_button {
+        font-size: 32px;
+        right: 1rem;
+        top: 1rem;
+    }
+    
+    #site_menu {
+        width: 100%;
+        padding: 60px 20px 60px 20px;
+        min-width: auto;
+    }
+    
+    #site_menu .close {
+        display: block;
+        font-size: 50px;
+        top: 15px;
+        right: 15px;
+    }
+}
+
+/* ==========================================================================
+   12. PRINT STYLES
+   ========================================================================== */
+
+@media print {
+    .fold-line,
+    #site_menu,
+    #site_menu_button {
+        display: none !important;
+    }
+    
+    .page-content {
+        padding: 20px;
+    }
+    
+    .project-section {
+        page-break-inside: avoid;
+        margin-bottom: 40px;
+    }
+    
+    .page-container {
+        flex-direction: column;
+    }
+    
+    .column-left,
+    .column-right {
+        background: white !important;
+    }
+}
+
+/* ==========================================================================
+   13. ACCESSIBILITY & FOCUS STATES
+   ========================================================================== */
+
+/* Focus styles for keyboard navigation */
+a:focus,
+button:focus,
+#site_menu_button:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .fold-line,
+    .fold-line::before {
+        animation: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --color-black-75: #000;
+        --color-black-60: #000;
+        --color-black-40: #666;
+    }
+    
+    .project-section {
+        border-bottom-color: #000;
+    }
+}
