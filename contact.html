@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Otis Filley</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Site Menu Button -->
+    <button id="site_menu_button" aria-label="Open site menu">☰</button>
+    
+    <!-- Site Menu -->
+    <nav id="site_menu" role="navigation" aria-label="Main navigation">
+        <div class="close" aria-label="Close menu">×</div>
+        <div class="menu-content">
+            <div class="page-link"><a href="index.html">Work</a></div>
+            <div class="break"></div>
+            <div class="page-link"><a href="about.html">About</a></div>
+            <div class="page-link"><a href="contact.html">Contact</a></div>
+            <div class="break"></div>
+            <div class="set-link"><a href="index.html#environmental">Environmental</a></div>
+            <div class="set-link indent"><a href="index.html#documentary">Documentary</a></div>
+            <div class="set-link indent"><a href="index.html#installation">Installation</a></div>
+        </div>
+    </nav>
+
+    <!-- Contact Page Content -->
+    <div class="page-container">
+        <div class="column-left">
+            <main class="page-content" role="main">
+                
+                <!-- Contact Section -->
+                <section class="project-section featured">
+                    <div class="project-category">Contact</div>
+                    <h1>Get in Touch</h1>
+                    <p class="lead">
+                        Available for commissions, collaborations, and editorial assignments 
+                        focusing on environmental journalism and documentary work.
+                    </p>
+                    
+                    <!-- Contact Methods -->
+                    <div class="contact-methods">
+                        <div class="contact-item">
+                            <h3>Email</h3>
+                            <p><a href="mailto:otis@otisfilley.com">otis@otisfilley.com</a></p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <h3>Location</h3>
+                            <p>Melbourne, Victoria, Australia</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <h3>Social Media</h3>
+                            <p>
+                                <a href="https://instagram.com/otisfilley" target="_blank" rel="noopener">Instagram</a><br>
+                                <a href="https://twitter.com/otisfilley" target="_blank" rel="noopener">Twitter</a><br>
+                                <a href="https://linkedin.com/in/otisfilley" target="_blank" rel="noopener">LinkedIn</a>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Services Section -->
+                <section class="project-section">
+                    <h2>Services</h2>
+                    
+                    <div class="service-item">
+                        <h3>Environmental Journalism</h3>
+                        <p>Long-form investigative pieces examining the intersection of policy, ecology, and community impact. Experienced in multi-year documentation projects.</p>
+                    </div>
+                    
+                    <div class="service-item">
+                        <h3>Documentary Photography</h3>
+                        <p>Editorial and assignment photography for publications, NGOs, and institutions focused on environmental and social issues.</p>
+                    </div>
+                    
+                    <div class="service-item">
+                        <h3>Video Production</h3>
+                        <p>Complete video production services from concept to final edit, including documentary films, promotional content, and multimedia installations.</p>
+                    </div>
+                    
+                    <div class="service-item">
+                        <h3>Multimedia Installations</h3>
+                        <p>Gallery and public space installations combining photography, video, and sound design to create immersive experiences around environmental themes.</p>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+
+        <!-- Fold Line -->
+        <div class="fold-line" aria-hidden="true"></div>
+
+        <!-- Right Column -->
+        <div class="column-right">
+            <div class="page-content">
+                
+                <!-- Contact Form -->
+                <section class="project-section">
+                    <h2>Send a Message</h2>
+                    
+                    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="organization">Organization</label>
+                            <input type="text" id="organization" name="organization">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="project-type">Project Type</label>
+                            <select id="project-type" name="project-type">
+                                <option value="">Select a project type</option>
+                                <option value="editorial">Editorial Assignment</option>
+                                <option value="documentary">Documentary Project</option>
+                                <option value="installation">Multimedia Installation</option>
+                                <option value="collaboration">Collaboration</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="timeline">Timeline</label>
+                            <input type="text" id="timeline" name="timeline" placeholder="e.g., 3 months, ongoing, flexible">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget">Budget Range</label>
+                            <select id="budget" name="budget">
+                                <option value="">Select budget range</option>
+                                <option value="under-5k">Under $5,000</option>
+                                <option value="5k-15k">$5,000 - $15,000</option>
+                                <option value="15k-50k">$15,000 - $50,000</option>
+                                <option value="over-50k">Over $50,000</option>
+                                <option value="tbd">To be discussed</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Project Description</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Tell me about your project, goals, and how you'd like to work together..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                    
+                    <p class="form-note">
+                        I aim to respond to all inquiries within 48 hours. For urgent projects, 
+                        please call or send a brief email with "URGENT" in the subject line.
+                    </p>
+                </section>
+
+                <!-- Testimonials -->
+                <section class="project-section">
+                    <h2>Testimonials</h2>
+                    
+                    <blockquote class="testimonial">
+                        <p>"Otis's environmental journalism combines rigorous investigation with compelling visual storytelling. His work on the Murray-Darling Basin crisis exemplifies the kind of sustained reporting our environmental challenges demand."</p>
+                        <cite>— Environmental Editor, The Guardian Australia</cite>
+                    </blockquote>
+                    
+                    <blockquote class="testimonial">
+                        <p>"The multimedia installation work creates an immersive experience that transforms how audiences understand environmental issues. Highly recommended for institutions seeking impactful contemporary art."</p>
+                        <cite>— Curator, FELTspace Adelaide</cite>
+                    </blockquote>
+                </section>
+
+                <!-- Acknowledgment -->
+                <footer class="acknowledgment">
+                    Otis Filley acknowledges First Australians and recognises their continuous 
+                    connection to Country, community and culture. He pays his respects to all 
+                    Aboriginal and Torres Strait Islander peoples and their Elders, past and present, 
+                    as the custodians of the world's oldest continuous living culture.
+                </footer>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
