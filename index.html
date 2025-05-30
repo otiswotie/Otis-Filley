@@ -12,10 +12,11 @@
         :root {
             --primary-black: #000000;
             --secondary-gray: #666666;
-            --light-gray: #f8f8f8;
+            --light-gray: #f5f5f5;
             --pure-white: #ffffff;
+            --accent-blue: #0066ff;
             --overlay-black: rgba(0, 0, 0, 0.7);
-            --overlay-white: rgba(255, 255, 255, 0.9);
+            --grid-gap: 20px;
         }
 
         * {
@@ -57,9 +58,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 2rem;
-            max-width: 1800px;
-            margin: 0 auto;
+            padding: 0 var(--grid-gap);
+            max-width: none;
         }
 
         .site-title {
@@ -122,18 +122,17 @@
         /* Main Container */
         .main-container {
             margin-top: 4rem;
-            padding: 0;
+            padding: var(--grid-gap);
         }
 
-        /* Masonry Grid Container */
-        .projects-masonry {
+        /* DS+R Inspired Grid */
+        .projects-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            grid-auto-rows: 20vh;
-            gap: 0;
-            max-width: 1800px;
+            grid-auto-rows: minmax(200px, auto);
+            gap: var(--grid-gap);
+            max-width: 100vw;
             margin: 0 auto;
-            min-height: 100vh;
         }
 
         /* Project Items with Different Sizes */
@@ -143,45 +142,50 @@
             cursor: pointer;
             background: var(--light-gray);
             transition: all 0.4s ease;
-            border: 1px solid transparent;
+            border-radius: 0;
+            min-height: 300px;
+            display: flex;
+            align-items: flex-end;
         }
 
         .project-item:hover {
-            transform: scale(1.02);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
             z-index: 100;
-            border: 1px solid var(--primary-black);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
-        /* Different Grid Sizes */
-        .size-large {
+        /* Grid Size Classes */
+        .hero {
+            grid-column: 1 / -1;
+            min-height: 60vh;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .large {
             grid-column: span 8;
-            grid-row: span 4;
+            min-height: 400px;
         }
 
-        .size-medium {
+        .medium {
             grid-column: span 6;
-            grid-row: span 3;
+            min-height: 350px;
         }
 
-        .size-small {
+        .small {
             grid-column: span 4;
-            grid-row: span 2;
+            min-height: 300px;
         }
 
-        .size-wide {
-            grid-column: span 12;
-            grid-row: span 2;
+        .wide {
+            grid-column: 1 / -1;
+            min-height: 250px;
         }
 
-        .size-tall {
+        .tall {
             grid-column: span 4;
-            grid-row: span 4;
-        }
-
-        .size-square {
-            grid-column: span 4;
-            grid-row: span 4;
+            min-height: 450px;
         }
 
         /* Background Images/Videos */
@@ -206,12 +210,12 @@
             width: 100%;
             height: 100%;
             background: var(--overlay-black);
-            opacity: 0.3;
+            opacity: 0.4;
             transition: opacity 0.4s ease;
         }
 
         .project-item:hover .project-overlay {
-            opacity: 0.1;
+            opacity: 0.2;
         }
 
         /* Video Container */
@@ -232,14 +236,12 @@
 
         /* Project Content */
         .project-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 1.5rem;
+            position: relative;
+            z-index: 50;
+            padding: 2rem;
             color: var(--pure-white);
             background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            z-index: 50;
+            width: 100%;
             transform: translateY(0);
             transition: transform 0.4s ease;
         }
@@ -249,32 +251,36 @@
         }
 
         .project-category-label {
-            font-size: 0.6rem;
+            font-size: 0.7rem;
             font-weight: 600;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
+            margin-bottom: 0.8rem;
+            opacity: 0.9;
+            display: inline-block;
+            padding: 4px 8px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 12px;
         }
 
         .project-title {
-            font-size: clamp(0.9rem, 2vw, 1.8rem);
+            font-size: clamp(1.2rem, 3vw, 2.5rem);
             font-weight: 800;
             line-height: 1;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             letter-spacing: -0.01em;
         }
 
         .project-subtitle {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             font-weight: 400;
             opacity: 0.9;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             font-style: italic;
         }
 
         .project-description {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 300;
             line-height: 1.4;
             opacity: 0.95;
@@ -282,17 +288,18 @@
             display: none;
         }
 
-        .size-large .project-description,
-        .size-medium .project-description {
+        .large .project-description,
+        .medium .project-description,
+        .hero .project-description {
             display: block;
         }
 
         .project-meta {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 500;
-            opacity: 0.7;
+            opacity: 0.8;
             border-top: 1px solid rgba(255,255,255,0.3);
-            padding-top: 0.5rem;
+            padding-top: 0.8rem;
         }
 
         /* Text-only Projects */
@@ -300,6 +307,10 @@
             background: var(--pure-white);
             color: var(--primary-black);
             border: 1px solid var(--secondary-gray);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .text-project .project-content {
@@ -307,15 +318,13 @@
             background: none;
             position: static;
             transform: none;
-            padding: 2rem;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            padding: 0;
+            height: auto;
         }
 
         .text-project .project-category-label {
             color: var(--secondary-gray);
+            background: rgba(37, 99, 235, 0.1);
         }
 
         .text-project .project-meta {
@@ -328,22 +337,11 @@
             color: var(--secondary-gray);
         }
 
-        /* Featured Hero Project */
-        .hero-project {
-            grid-column: 1 / -1;
-            grid-row: span 5;
-            background: var(--primary-black);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
+        /* Hero Project Specific */
         .hero-content {
-            text-align: center;
+            max-width: 70%;
             color: var(--pure-white);
             z-index: 100;
-            max-width: 60%;
         }
 
         .hero-category {
@@ -351,12 +349,16 @@
             font-weight: 500;
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             opacity: 0.9;
+            display: inline-block;
+            padding: 6px 12px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
         }
 
         .hero-title {
-            font-size: clamp(2rem, 6vw, 4rem);
+            font-size: clamp(2.5rem, 6vw, 5rem);
             font-weight: 900;
             line-height: 0.9;
             margin-bottom: 2rem;
@@ -364,30 +366,30 @@
         }
 
         .hero-description {
-            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-size: clamp(1rem, 2vw, 1.3rem);
             font-weight: 300;
             line-height: 1.4;
             opacity: 0.95;
         }
 
-        /* Links Grid */
-        .links-project {
+        /* Links and Contact Sections */
+        .links-section, .contact-section {
             background: var(--light-gray);
             color: var(--primary-black);
-            grid-column: 1 / -1;
-            grid-row: span 3;
+            padding: 3rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 3rem;
-        }
-
-        .links-content {
-            width: 100%;
             text-align: center;
+            flex-direction: column;
         }
 
-        .links-title {
+        .contact-section {
+            background: var(--primary-black);
+            color: var(--pure-white);
+        }
+
+        .section-title {
             font-size: 2rem;
             font-weight: 800;
             margin-bottom: 2rem;
@@ -399,8 +401,8 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 1000px;
+            width: 100%;
         }
 
         .links-category h3 {
@@ -430,41 +432,11 @@
             color: var(--primary-black);
         }
 
-        /* Contact Section */
-        .contact-project {
-            background: var(--primary-black);
-            color: var(--pure-white);
-            grid-column: 1 / -1;
-            grid-row: span 3;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .contact-content {
-            max-width: 600px;
-        }
-
-        .contact-title {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .contact-description {
-            font-size: 1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
         .contact-links {
             display: flex;
             gap: 2rem;
-            justify-content: center;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .contact-link {
@@ -485,7 +457,6 @@
 
         /* Footer */
         .acknowledgment {
-            grid-column: 1 / -1;
             background: var(--light-gray);
             padding: 3rem;
             text-align: center;
@@ -494,46 +465,37 @@
             line-height: 1.6;
             color: var(--secondary-gray);
             font-style: italic;
+            grid-column: 1 / -1;
         }
 
         /* Mobile Responsive */
         @media (max-width: 1024px) {
-            .projects-masonry {
+            .projects-grid {
                 grid-template-columns: repeat(8, 1fr);
             }
             
-            .size-large {
+            .large {
                 grid-column: span 8;
-                grid-row: span 3;
             }
             
-            .size-medium {
+            .medium {
                 grid-column: span 6;
-                grid-row: span 3;
             }
             
-            .size-small {
+            .small {
                 grid-column: span 4;
-                grid-row: span 2;
             }
             
-            .size-wide {
-                grid-column: span 8;
-                grid-row: span 2;
-            }
-            
-            .size-tall {
+            .tall {
                 grid-column: span 4;
-                grid-row: span 3;
-            }
-            
-            .size-square {
-                grid-column: span 4;
-                grid-row: span 3;
             }
         }
 
         @media (max-width: 768px) {
+            :root {
+                --grid-gap: 15px;
+            }
+            
             .nav-links {
                 display: none;
             }
@@ -542,23 +504,21 @@
                 display: block;
             }
             
-            .projects-masonry {
+            .projects-grid {
                 grid-template-columns: repeat(4, 1fr);
-                grid-auto-rows: 15vh;
             }
             
-            .size-large,
-            .size-medium,
-            .size-wide {
+            .large,
+            .medium,
+            .small,
+            .tall,
+            .wide {
                 grid-column: span 4;
-                grid-row: span 3;
+                min-height: 250px;
             }
             
-            .size-small,
-            .size-tall,
-            .size-square {
-                grid-column: span 4;
-                grid-row: span 2;
+            .hero {
+                min-height: 50vh;
             }
             
             .hero-content {
@@ -566,7 +526,7 @@
             }
             
             .project-content {
-                padding: 1rem;
+                padding: 1.5rem;
             }
             
             .contact-links {
@@ -588,13 +548,31 @@
         }
 
         /* Loading */
-        .projects-masonry {
+        .projects-grid {
             animation: fadeIn 1s ease;
         }
 
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+
+        /* Hover Effects */
+        .project-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: transparent;
+            transition: background 0.3s ease;
+            z-index: 30;
+            pointer-events: none;
+        }
+
+        .project-item:hover::before {
+            background: rgba(0,0,0,0.1);
         }
     </style>
 </head>
@@ -617,11 +595,11 @@
     <!-- Main Container -->
     <div class="main-container">
         
-        <!-- Masonry Grid -->
-        <div class="projects-masonry">
+        <!-- DS+R Grid -->
+        <div class="projects-grid">
             
             <!-- Hero Project: More Than a Fish Kill -->
-            <div class="project-item hero-project fade-in">
+            <div class="project-item hero fade-in">
                 <img src="https://freight.cargo.site/t/original/i/6243155c5c8e402e19828854978b2e65d1a36cc76e4465987a6e92d4f0f75066/Otis-Filley_Photos_website-Format-2118.jpg" 
                      alt="Murray-Darling Basin environmental documentation" 
                      class="project-background">
@@ -636,7 +614,7 @@
             </div>
 
             <!-- Trampling Victoria's Alps - Large -->
-            <div class="project-item size-large fade-in">
+            <div class="project-item large fade-in">
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/Z7ehu8q6oUY?si=a49xj9czjHPQ6Vog&autoplay=1&mute=1&loop=1&controls=0" 
                             title="Trampling Victoria's Alps documentary">
@@ -651,13 +629,13 @@
                         At Native Cat Flat in Victoria's Alpine national park, four fenced-off areas show a strikingly different ecology, highlighting the damage wrought by more than 2,700 feral horses.
                     </p>
                     <div class="project-meta">
-                        <span class="project-year">THE GUARDIAN 2024 • Videographer • Journalist • Editor</span>
+                        THE GUARDIAN 2024 • Videographer • Journalist • Editor
                     </div>
                 </div>
             </div>
 
-            <!-- Mutawintji - Medium -->
-            <div class="project-item size-medium fade-in">
+            <!-- Mutawintji - Small -->
+            <div class="project-item small fade-in">
                 <img src="https://freight.cargo.site/t/original/i/13a2f5c8c7e4aab00aa7a4855db9dbee48f1aa9893dafbbf7a4e7f4501dd71f1/Otis-Filley_Photos_website-Format-2112.jpg" 
                      alt="Mutawintji National Park cultural documentation" 
                      class="project-background">
@@ -666,17 +644,14 @@
                     <div class="project-category-label">Cultural Documentation</div>
                     <h2 class="project-title">MUTAWINTJI</h2>
                     <p class="project-subtitle">2022-2024 | Mutawintji (NSW)</p>
-                    <p class="project-description">
-                        Celebrated for its profound cultural and historical importance, alongside captivating desert vistas and indigenous heritage.
-                    </p>
                     <div class="project-meta">
-                        <span class="project-year">NITV • THE GUARDIAN • 2022-2024</span>
+                        NITV • THE GUARDIAN • 2022-2024
                     </div>
                 </div>
             </div>
 
             <!-- The Cod and the Economy - Medium -->
-            <div class="project-item size-medium fade-in">
+            <div class="project-item medium fade-in">
                 <div class="video-container">
                     <iframe src="https://player.vimeo.com/video/446375576?h=ded4691e68&autoplay=1&muted=1&loop=1&background=1" 
                             title="The Cod and the Economy">
@@ -691,13 +666,13 @@
                         Following local volunteers as they rescue surviving fish and exploring how financial systems prioritize irrigation at the expense of river health.
                     </p>
                     <div class="project-meta">
-                        <span class="project-year">COLLABORATIVE PRODUCTION • 2020</span>
+                        COLLABORATIVE PRODUCTION • 2020
                     </div>
                 </div>
             </div>
 
             <!-- Floodplain Harvesting - Small -->
-            <div class="project-item size-small fade-in">
+            <div class="project-item small fade-in">
                 <img src="https://freight.cargo.site/t/original/i/2eb435060ada8a782f98bff5db236a6e1bdf60362e9cf0d234242e529c176798/Irrigators-pump-water-from-darling-Baaka-river-into-personal-storages-near-Bourke_2.jpg" 
                      alt="Irrigators pumping water from Darling-Baaka River" 
                      class="project-background">
@@ -707,13 +682,13 @@
                     <h2 class="project-title">FLOODPLAIN HARVESTING</h2>
                     <p class="project-subtitle">2022 | Menindee (NSW)</p>
                     <div class="project-meta">
-                        <span class="project-year">BARRIER TRUTH • 2022</span>
+                        BARRIER TRUTH • 2022
                     </div>
                 </div>
             </div>
 
             <!-- Fighting to Save Public Housing - Small -->
-            <div class="project-item size-small fade-in">
+            <div class="project-item small fade-in">
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/br4pMS9-0po?si=8gb7cV61KZjXa9Pn&autoplay=1&mute=1&loop=1&controls=0" 
                             title="Fighting to Save Public Housing">
@@ -724,13 +699,13 @@
                     <div class="project-category-label">Social Documentary</div>
                     <h2 class="project-title">FIGHTING TO SAVE PUBLIC HOUSING</h2>
                     <div class="project-meta">
-                        <span class="project-year">THE GREENS • 2024</span>
+                        THE GREENS • 2024
                     </div>
                 </div>
             </div>
 
             <!-- Menindee Floods - Tall -->
-            <div class="project-item size-tall fade-in">
+            <div class="project-item tall fade-in">
                 <img src="https://freight.cargo.site/t/original/i/131953df813b7dd8b4a7b1b05eafcd18ec72c71f8900802363d930661d590c31/Otis-Filley_Photos_website-Format-214.jpg" 
                      alt="Menindee floods documentation" 
                      class="project-background">
@@ -740,13 +715,13 @@
                     <h2 class="project-title">MENINDEE FLOODS</h2>
                     <p class="project-subtitle">2022 | Menindee (NSW)</p>
                     <div class="project-meta">
-                        <span class="project-year">THE GUARDIAN • 2022</span>
+                        THE GUARDIAN • 2022
                     </div>
                 </div>
             </div>
 
-            <!-- Wilcannia Covid Crisis - Square -->
-            <div class="project-item size-square fade-in">
+            <!-- Wilcannia Covid Crisis - Medium -->
+            <div class="project-item medium fade-in">
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/TpqTP9wOCK0?autoplay=1&mute=1&loop=1&controls=0" 
                             title="Roo hunters deliver kangaroo meat to mob in Wilcannia">
@@ -757,14 +732,17 @@
                     <div class="project-category-label">Community Crisis Documentation</div>
                     <h2 class="project-title">WILCANNIA COVID CRISIS</h2>
                     <p class="project-subtitle">2021-2023 | Wilcannia (NSW)</p>
+                    <p class="project-description">
+                        With a strong connection to the community, documenting the challenges and impact of the Covid-19 pandemic on residents of Wilcannia.
+                    </p>
                     <div class="project-meta">
-                        <span class="project-year">NITV • NETWORK 10</span>
+                        NITV • NETWORK 10
                     </div>
                 </div>
             </div>
 
-            <!-- Youth Ideas Lab - Square -->
-            <div class="project-item size-square fade-in">
+            <!-- Youth Ideas Lab - Small -->
+            <div class="project-item small fade-in">
                 <img src="https://freight.cargo.site/t/original/i/1b3ae3d04a446ac69b2f4cbc1066346a71b16542db099d48a4e88bfcf16c3162/Broken-Hill-town-from-Above.jpg" 
                      alt="Broken Hill from above" 
                      class="project-background">
@@ -774,13 +752,13 @@
                     <h2 class="project-title">YOUTH IDEAS LAB</h2>
                     <p class="project-subtitle">ABC Heywire | 2021</p>
                     <div class="project-meta">
-                        <span class="project-year">AUSTRALIAN BROADCASTING CORPORATION</span>
+                        AUSTRALIAN BROADCASTING CORPORATION
                     </div>
                 </div>
             </div>
 
             <!-- Art Legacy of Broken Hill - Text Project -->
-            <div class="project-item size-medium text-project fade-in">
+            <div class="project-item medium text-project fade-in">
                 <div class="project-content">
                     <div class="project-category-label">Cultural Politics</div>
                     <h2 class="project-title">ART LEGACY OF BROKEN HILL</h2>
@@ -789,13 +767,13 @@
                         The curator, gallery manager and two other senior staff resign from Broken Hill's art gallery as the council exerts its influence over what constitutes 'local' art.
                     </p>
                     <div class="project-meta">
-                        <span class="project-year">THE GUARDIAN • BARRIER TRUTH • 2022-2023</span>
+                        THE GUARDIAN • BARRIER TRUTH • 2022-2023
                     </div>
                 </div>
             </div>
 
-            <!-- Tending Toxicity - Large -->
-            <div class="project-item size-large fade-in">
+            <!-- Tending Toxicity - Small -->
+            <div class="project-item small fade-in">
                 <img src="https://freight.cargo.site/t/original/i/cf9a9ec73f31cb0534d0c9ae239d7c816ec41e967699d474a745372ffdb74a49/Menindee-Lake-filling-2020_2-3.jpg" 
                      alt="Menindee Lake environmental installation documentation" 
                      class="project-background">
@@ -804,70 +782,62 @@
                     <div class="project-category-label">Art Installation • FELTspace</div>
                     <h2 class="project-title">TENDING TOXICITY</h2>
                     <p class="project-subtitle">FELTspace Adelaide 2022</p>
-                    <p class="project-description">
-                        A multimedia installation exploring environmental contamination and community response through immersive media. The work examines how communities adapt to and resist environmental degradation.
-                    </p>
                     <div class="project-meta">
-                        <span class="project-year">FILM BY OTIS FILLEY AND DAN SCHULZ • 2022</span>
+                        FILM BY OTIS FILLEY AND DAN SCHULZ
                     </div>
                 </div>
             </div>
 
             <!-- Links Section -->
-            <div class="project-item links-project fade-in">
-                <div class="links-content">
-                    <h2 class="links-title">Additional Work</h2>
-                    <div class="links-grid">
-                        <div class="links-category">
-                            <h3>Environmental</h3>
-                            <ul>
-                                <li><a href="#">Murray-Darling Basin Reports</a></li>
-                                <li><a href="#">Water Policy Investigations</a></li>
-                                <li><a href="#">Climate Change Documentation</a></li>
-                            </ul>
-                        </div>
-                        <div class="links-category">
-                            <h3>Community</h3>
-                            <ul>
-                                <li><a href="#">Indigenous Cultural Documentation</a></li>
-                                <li><a href="#">Regional Development Stories</a></li>
-                                <li><a href="#">Community Resilience Projects</a></li>
-                            </ul>
-                        </div>
-                        <div class="links-category">
-                            <h3>Documentary</h3>
-                            <ul>
-                                <li><a href="#">This is Water Series</a></li>
-                                <li><a href="#">Darling-Baaka River Regatta</a></li>
-                                <li><a href="#">Finding a Dentist</a></li>
-                            </ul>
-                        </div>
-                        <div class="links-category">
-                            <h3>Exhibitions</h3>
-                            <ul>
-                                <li><a href="#">GLAMfest Broken Hill</a></li>
-                                <li><a href="#">Aquanormal</a></li>
-                                <li><a href="#">Menindee Film Hub</a></li>
-                            </ul>
-                        </div>
+            <div class="project-item wide links-section fade-in">
+                <h2 class="section-title">Additional Work</h2>
+                <div class="links-grid">
+                    <div class="links-category">
+                        <h3>Environmental</h3>
+                        <ul>
+                            <li><a href="#">Murray-Darling Basin Reports</a></li>
+                            <li><a href="#">Water Policy Investigations</a></li>
+                            <li><a href="#">Climate Change Documentation</a></li>
+                        </ul>
+                    </div>
+                    <div class="links-category">
+                        <h3>Community</h3>
+                        <ul>
+                            <li><a href="#">Indigenous Cultural Documentation</a></li>
+                            <li><a href="#">Regional Development Stories</a></li>
+                            <li><a href="#">Community Resilience Projects</a></li>
+                        </ul>
+                    </div>
+                    <div class="links-category">
+                        <h3>Documentary</h3>
+                        <ul>
+                            <li><a href="#">This is Water Series</a></li>
+                            <li><a href="#">Darling-Baaka River Regatta</a></li>
+                            <li><a href="#">Finding a Dentist</a></li>
+                        </ul>
+                    </div>
+                    <div class="links-category">
+                        <h3>Exhibitions</h3>
+                        <ul>
+                            <li><a href="#">GLAMfest Broken Hill</a></li>
+                            <li><a href="#">Aquanormal</a></li>
+                            <li><a href="#">Menindee Film Hub</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
             <!-- Contact Section -->
-            <div class="project-item contact-project fade-in">
-                <div class="contact-content">
-                    <div class="project-category-label">Connect</div>
-                    <h2 class="contact-title">Contact & Collaboration</h2>
-                    <p class="contact-description">
-                        Get in touch to discuss environmental journalism projects, documentary collaborations, or media commissions focusing on ecology, community, and policy.
-                    </p>
-                    <div class="contact-links">
-                        <a href="mailto:otisfilley@gmail.com" class="contact-link">email</a>
-                        <a href="https://www.instagram.com/otisfilley" target="_blank" class="contact-link">instagram</a>
-                        <a href="https://twitter.com/otisfilley" target="_blank" class="contact-link">twitter</a>
-                        <a href="https://www.linkedin.com/in/otis-filley-a2591b25b/" target="_blank" class="contact-link">linkedin</a>
-                    </div>
+            <div class="project-item wide contact-section fade-in">
+                <h2 class="section-title">Contact & Collaboration</h2>
+                <p style="max-width: 40rem; margin-bottom: 2rem; opacity: 0.9;">
+                    Get in touch to discuss environmental journalism projects, documentary collaborations, or media commissions focusing on ecology, community, and policy.
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:otisfilley@gmail.com" class="contact-link">email</a>
+                    <a href="https://www.instagram.com/otisfilley" target="_blank" class="contact-link">instagram</a>
+                    <a href="https://twitter.com/otisfilley" target="_blank" class="contact-link">twitter</a>
+                    <a href="https://www.linkedin.com/in/otis-filley-a2591b25b/" target="_blank" class="contact-link">linkedin</a>
                 </div>
             </div>
 
@@ -914,18 +884,18 @@
                     
                     // Simple scroll to relevant section
                     if (targetId === 'contact') {
-                        document.querySelector('.contact-project').scrollIntoView({
+                        document.querySelector('.contact-section').scrollIntoView({
                             behavior: 'smooth',
                             block: 'center'
                         });
                     } else if (targetId === 'environmental') {
-                        document.querySelector('.hero-project').scrollIntoView({
+                        document.querySelector('.hero').scrollIntoView({
                             behavior: 'smooth',
                             block: 'start'
                         });
                     } else {
                         // Scroll to a representative project
-                        const firstProject = document.querySelector('.project-item:not(.hero-project)');
+                        const firstProject = document.querySelector('.project-item:not(.hero)');
                         if (firstProject) {
                             firstProject.scrollIntoView({
                                 behavior: 'smooth',
@@ -940,15 +910,21 @@
             const projectItems = document.querySelectorAll('.project-item');
             projectItems.forEach(item => {
                 item.addEventListener('mouseenter', function() {
-                    if (!this.classList.contains('hero-project')) {
+                    if (!this.classList.contains('hero')) {
                         this.style.zIndex = '200';
                     }
                 });
                 
                 item.addEventListener('mouseleave', function() {
-                    if (!this.classList.contains('hero-project')) {
+                    if (!this.classList.contains('hero')) {
                         this.style.zIndex = '1';
                     }
+                });
+
+                // Click handling for potential future expansion
+                item.addEventListener('click', function() {
+                    // Could add project detail modal or navigation here
+                    console.log('Project clicked:', this.querySelector('.project-title')?.textContent);
                 });
             });
 
@@ -1001,21 +977,22 @@
                         link.addEventListener('click', function(e) {
                             e.preventDefault();
                             document.body.removeChild(overlay);
+                            document.body.style.overflow = '';
                             
                             // Navigate to section
                             const targetId = this.getAttribute('href').substring(1);
                             if (targetId === 'contact') {
-                                document.querySelector('.contact-project').scrollIntoView({
+                                document.querySelector('.contact-section').scrollIntoView({
                                     behavior: 'smooth',
                                     block: 'center'
                                 });
                             } else if (targetId === 'environmental') {
-                                document.querySelector('.hero-project').scrollIntoView({
+                                document.querySelector('.hero').scrollIntoView({
                                     behavior: 'smooth',
                                     block: 'start'
                                 });
                             } else {
-                                const firstProject = document.querySelector('.project-item:not(.hero-project)');
+                                const firstProject = document.querySelector('.project-item:not(.hero)');
                                 if (firstProject) {
                                     firstProject.scrollIntoView({
                                         behavior: 'smooth',
@@ -1042,6 +1019,7 @@
                     `;
                     closeButton.addEventListener('click', function() {
                         document.body.removeChild(overlay);
+                        document.body.style.overflow = '';
                     });
                     overlay.appendChild(closeButton);
                     
@@ -1087,9 +1065,9 @@
                 
                 backgrounds.forEach(bg => {
                     const rect = bg.closest('.project-item').getBoundingClientRect();
-                    const speed = 0.1;
+                    const speed = 0.05;
                     const yPos = -(scrolled - rect.top) * speed;
-                    bg.style.transform = `translate3d(0, ${yPos}px, 0)`;
+                    bg.style.transform = `translate3d(0, ${yPos}px, 0) scale(1.1)`;
                 });
                 ticking = false;
             }
@@ -1101,10 +1079,10 @@
                 }
             });
 
-            // Random grid item entrance animations
+            // Random entrance animations with stagger
             const gridItems = document.querySelectorAll('.project-item');
             gridItems.forEach((item, index) => {
-                item.style.animationDelay = `${Math.random() * 0.5}s`;
+                item.style.animationDelay = `${index * 0.1}s`;
             });
 
             // Lazy load videos for better performance
@@ -1113,7 +1091,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const iframe = entry.target;
-                        // Video is already loaded, just observe for analytics
+                        // Video is already loaded with autoplay for demo
                         videoObserver.unobserve(iframe);
                     }
                 });
@@ -1122,6 +1100,32 @@
             videos.forEach(video => {
                 videoObserver.observe(video);
             });
+
+            // Grid item size randomization on load (subtle DS+R effect)
+            function randomizeGrid() {
+                const items = document.querySelectorAll('.project-item:not(.hero):not(.wide)');
+                const sizes = ['small', 'medium', 'large', 'tall'];
+                
+                items.forEach(item => {
+                    // Remove existing size classes
+                    sizes.forEach(size => item.classList.remove(size));
+                    
+                    // Add a random size (with some weighting)
+                    const random = Math.random();
+                    if (random < 0.3) {
+                        item.classList.add('small');
+                    } else if (random < 0.6) {
+                        item.classList.add('medium');
+                    } else if (random < 0.8) {
+                        item.classList.add('large');
+                    } else {
+                        item.classList.add('tall');
+                    }
+                });
+            }
+
+            // Uncomment to enable random grid on load
+            // randomizeGrid();
         });
     </script>
 </body>
