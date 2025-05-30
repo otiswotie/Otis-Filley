@@ -3,194 +3,808 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Otis Filley</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Otis Filley - Environmental Journalism & Documentary</title>
+    <meta name="description" content="Documentary filmmaker and photojournalist investigating the intersection of ecology, community, and policy through immersive visual narratives.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-black: #000000;
+            --secondary-gray: #666666;
+            --light-gray: #f5f5f5;
+            --pure-white: #ffffff;
+            --accent-blue: #0066ff;
+            --overlay-black: rgba(0, 0, 0, 0.7);
+            --overlay-white: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 14px;
+            overflow-x: hidden;
+        }
+
+        @media (min-width: 768px) { html { font-size: 16px; } }
+        @media (min-width: 1200px) { html { font-size: 18px; } }
+        @media (min-width: 1600px) { html { font-size: 20px; } }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.4;
+            color: var(--primary-black);
+            background: var(--pure-white);
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+
+        /* Architectural Navigation */
+        .nav-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10000;
+            height: 4rem;
+            background: var(--pure-white);
+            border-bottom: 1px solid var(--primary-black);
+        }
+
+        .nav-container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            max-width: none;
+        }
+
+        .site-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--primary-black);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .site-title:hover {
+            letter-spacing: 0.2em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: lowercase;
+            color: var(--secondary-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-black);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary-black);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            font-weight: 300;
+            cursor: pointer;
+            color: var(--primary-black);
+        }
+
+        /* Main Container */
+        .main-container {
+            margin-top: 4rem;
+            width: 100vw;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section - Full Bleed */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            background: var(--primary-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 100;
+            text-align: center;
+            max-width: 80%;
+            color: var(--pure-white);
+        }
+
+        .hero-category {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-description {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            font-weight: 300;
+            line-height: 1.4;
+            max-width: 60rem;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Project Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            width: 100vw;
+        }
+
+        /* Project Item - Full Bleed */
+        .project-item {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .project-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .project-item:hover .project-background {
+            transform: scale(1.05);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--overlay-black);
+            opacity: 0.4;
+            transition: opacity 0.6s ease;
+        }
+
+        .project-item:hover .project-overlay {
+            opacity: 0.2;
+        }
+
+        .project-content {
+            position: relative;
+            z-index: 100;
+            color: var(--pure-white);
+            padding: 4rem;
+            max-width: 50%;
+            text-align: left;
+        }
+
+        .project-item:nth-child(even) .project-content {
+            text-align: right;
+        }
+
+        .project-category-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+            color: var(--pure-white);
+        }
+
+        .project-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 0.9;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .project-subtitle {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .project-description {
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.5;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .project-meta {
+            font-size: 0.85rem;
+            font-weight: 500;
+            opacity: 0.8;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 1rem;
+        }
+
+        .project-year {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-medium {
+            font-weight: 300;
+        }
+
+        /* Video Projects */
+        .video-project {
+            background: var(--primary-black);
+        }
+
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 50;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--overlay-black);
+            opacity: 0.6;
+            z-index: 60;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+        }
+
+        .video-project:hover .video-overlay {
+            opacity: 0.3;
+        }
+
+        /* Text-Only Projects */
+        .text-project {
+            background: var(--pure-white);
+            color: var(--primary-black);
+        }
+
+        .text-project .project-content {
+            color: var(--primary-black);
+            max-width: 70%;
+        }
+
+        .text-project .project-category-label {
+            color: var(--secondary-gray);
+        }
+
+        .text-project .project-meta {
+            border-top: 1px solid var(--secondary-gray);
+        }
+
+        /* Links Section */
+        .links-project {
+            background: var(--light-gray);
+            color: var(--primary-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 4rem;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            width: 100%;
+            max-width: 60rem;
+            margin-top: 3rem;
+        }
+
+        .links-category h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .links-category ul {
+            list-style: none;
+        }
+
+        .links-category li {
+            margin-bottom: 0.8rem;
+        }
+
+        .links-category a {
+            color: var(--secondary-gray);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .links-category a:hover {
+            color: var(--primary-black);
+        }
+
+        .links-category a::before {
+            content: '→';
+            position: absolute;
+            left: -1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .links-category a:hover::before {
+            opacity: 1;
+        }
+
+        /* Contact Section */
+        .contact-project {
+            background: var(--primary-black);
+            color: var(--pure-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .contact-link {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--pure-white);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border: 1px solid var(--pure-white);
+            transition: all 0.3s ease;
+            text-transform: lowercase;
+        }
+
+        .contact-link:hover {
+            background: var(--pure-white);
+            color: var(--primary-black);
+        }
+
+        /* Footer */
+        .acknowledgment {
+            background: var(--light-gray);
+            padding: 4rem;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--secondary-gray);
+            font-style: italic;
+        }
+
+        /* Scroll Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1s ease;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-button {
+                display: block;
+            }
+            
+            .hero-content {
+                max-width: 90%;
+                padding: 2rem;
+            }
+            
+            .project-content {
+                padding: 2rem;
+                max-width: 90%;
+                text-align: center !important;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        .loading {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Custom Cursor */
+        .project-item {
+            cursor: pointer;
+        }
+
+        .project-item:hover {
+            cursor: crosshair;
+        }
+
+        /* Typography Enhancements */
+        .architectural-text {
+            font-feature-settings: 'ss01' on, 'ss02' on;
+            -webkit-font-feature-settings: 'ss01' on, 'ss02' on;
+        }
+
+        /* Minimal Scrollbar */
+        ::-webkit-scrollbar {
+            width: 2px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-gray);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-black);
+        }
+    </style>
 </head>
 <body>
-    <!-- Site Menu Button -->
-    <button id="site_menu_button" aria-label="Open site menu">☰</button>
-    
-    <!-- Site Menu -->
-    <nav id="site_menu" role="navigation" aria-label="Main navigation">
-        <div class="close" aria-label="Close menu">×</div>
-        <div class="menu-content">
-            <div class="page-link"><a href="index.html">Work</a></div>
-            <div class="break"></div>
-            <div class="page-link"><a href="about.html">About</a></div>
-            <div class="page-link"><a href="contact.html">Contact</a></div>
-            <div class="break"></div>
-            <div class="set-link"><a href="index.html#environmental">Environmental</a></div>
-            <div class="set-link indent"><a href="index.html#documentary">Documentary</a></div>
-            <div class="set-link indent"><a href="index.html#installation">Installation</a></div>
+    <!-- Architectural Navigation -->
+    <nav class="nav-wrapper">
+        <div class="nav-container">
+            <a href="#" class="site-title architectural-text">OTIS FILLEY</a>
+            <div class="nav-links">
+                <a href="#environmental">environmental</a>
+                <a href="#documentary">documentary</a>
+                <a href="#journalism">journalism</a>
+                <a href="#exhibitions">exhibitions</a>
+                <a href="#contact">contact</a>
+            </div>
+            <button class="mobile-menu-button">☰</button>
         </div>
     </nav>
 
-    <!-- Contact Page Content -->
-    <div class="page-container">
-        <div class="column-left">
-            <main class="page-content" role="main">
-                
-                <!-- Contact Section -->
-                <section class="project-section featured">
-                    <div class="project-category">Contact</div>
-                    <h1>Get in Touch</h1>
-                    <p class="lead">
-                        Available for commissions, collaborations, and editorial assignments 
-                        focusing on environmental journalism and documentary work.
-                    </p>
-                    
-                    <!-- Contact Methods -->
-                    <div class="contact-methods">
-                        <div class="contact-item">
-                            <h3>Email</h3>
-                            <p><a href="mailto:otis@otisfilley.com">otis@otisfilley.com</a></p>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <h3>Location</h3>
-                            <p>Melbourne, Victoria, Australia</p>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <h3>Social Media</h3>
-                            <p>
-                                <a href="https://instagram.com/otisfilley" target="_blank" rel="noopener">Instagram</a><br>
-                                <a href="https://twitter.com/otisfilley" target="_blank" rel="noopener">Twitter</a><br>
-                                <a href="https://linkedin.com/in/otisfilley" target="_blank" rel="noopener">LinkedIn</a>
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Services Section -->
-                <section class="project-section">
-                    <h2>Services</h2>
-                    
-                    <div class="service-item">
-                        <h3>Environmental Journalism</h3>
-                        <p>Long-form investigative pieces examining the intersection of policy, ecology, and community impact. Experienced in multi-year documentation projects.</p>
-                    </div>
-                    
-                    <div class="service-item">
-                        <h3>Documentary Photography</h3>
-                        <p>Editorial and assignment photography for publications, NGOs, and institutions focused on environmental and social issues.</p>
-                    </div>
-                    
-                    <div class="service-item">
-                        <h3>Video Production</h3>
-                        <p>Complete video production services from concept to final edit, including documentary films, promotional content, and multimedia installations.</p>
-                    </div>
-                    
-                    <div class="service-item">
-                        <h3>Multimedia Installations</h3>
-                        <p>Gallery and public space installations combining photography, video, and sound design to create immersive experiences around environmental themes.</p>
-                    </div>
-                </section>
-
-            </main>
-        </div>
-
-        <!-- Fold Line -->
-        <div class="fold-line" aria-hidden="true"></div>
-
-        <!-- Right Column -->
-        <div class="column-right">
-            <div class="page-content">
-                
-                <!-- Contact Form -->
-                <section class="project-section">
-                    <h2>Send a Message</h2>
-                    
-                    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="organization">Organization</label>
-                            <input type="text" id="organization" name="organization">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="project-type">Project Type</label>
-                            <select id="project-type" name="project-type">
-                                <option value="">Select a project type</option>
-                                <option value="editorial">Editorial Assignment</option>
-                                <option value="documentary">Documentary Project</option>
-                                <option value="installation">Multimedia Installation</option>
-                                <option value="collaboration">Collaboration</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="timeline">Timeline</label>
-                            <input type="text" id="timeline" name="timeline" placeholder="e.g., 3 months, ongoing, flexible">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="budget">Budget Range</label>
-                            <select id="budget" name="budget">
-                                <option value="">Select budget range</option>
-                                <option value="under-5k">Under $5,000</option>
-                                <option value="5k-15k">$5,000 - $15,000</option>
-                                <option value="15k-50k">$15,000 - $50,000</option>
-                                <option value="over-50k">Over $50,000</option>
-                                <option value="tbd">To be discussed</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Project Description</label>
-                            <textarea id="message" name="message" rows="6" required placeholder="Tell me about your project, goals, and how you'd like to work together..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-button">Send Message</button>
-                    </form>
-                    
-                    <p class="form-note">
-                        I aim to respond to all inquiries within 48 hours. For urgent projects, 
-                        please call or send a brief email with "URGENT" in the subject line.
-                    </p>
-                </section>
-
-                <!-- Testimonials -->
-                <section class="project-section">
-                    <h2>Testimonials</h2>
-                    
-                    <blockquote class="testimonial">
-                        <p>"Otis's environmental journalism combines rigorous investigation with compelling visual storytelling. His work on the Murray-Darling Basin crisis exemplifies the kind of sustained reporting our environmental challenges demand."</p>
-                        <cite>— Environmental Editor, The Guardian Australia</cite>
-                    </blockquote>
-                    
-                    <blockquote class="testimonial">
-                        <p>"The multimedia installation work creates an immersive experience that transforms how audiences understand environmental issues. Highly recommended for institutions seeking impactful contemporary art."</p>
-                        <cite>— Curator, FELTspace Adelaide</cite>
-                    </blockquote>
-                </section>
-
-                <!-- Acknowledgment -->
-                <footer class="acknowledgment">
-                    Otis Filley acknowledges First Australians and recognises their continuous 
-                    connection to Country, community and culture. He pays his respects to all 
-                    Aboriginal and Torres Strait Islander peoples and their Elders, past and present, 
-                    as the custodians of the world's oldest continuous living culture.
-                </footer>
-
+    <!-- Main Container -->
+    <div class="main-container">
+        
+        <!-- Hero Section -->
+        <section class="hero-section loading">
+            <img src="https://freight.cargo.site/t/original/i/6243155c5c8e402e19828854978b2e65d1a36cc76e4465987a6e92d4f0f75066/Otis-Filley_Photos_website-Format-2118.jpg" 
+                 alt="Murray-Darling Basin environmental documentation" 
+                 class="hero-image">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-category">Environmental Investigation</div>
+                <h1 class="hero-title architectural-text">MORE THAN A FISH KILL</h1>
+                <p class="hero-description">
+                    Exploring how artists, fisheries managers and First Nations custodians came together in the aftermath of devastating fish kills along the Barka/Baaka (Darling River) and turned these ecological disasters into catalysts for cultural connection and revival.
+                </p>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
-</body>
-</html>
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+            
+            <!-- Trampling Victoria's Alps -->
+            <div class="project-item video-project fade-in-up">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/Z7ehu8q6oUY?si=a49xj9czjHPQ6Vog&autoplay=1&mute=1&loop=1&controls=0" 
+                            title="Trampling Victoria's Alps documentary">
+                    </iframe>
+                </div>
+                <div class="video-overlay"></div>
+                <div class="project-content">
+                    <div class="project-category-label">Documentary • The Guardian</div>
+                    <h2 class="project-title architectural-text">TRAMPLING VICTORIA'S ALPS</h2>
+                    <p class="project-subtitle">How brumbies are destroying the native habitat</p>
+                    <p class="project-description">
+                        At Native Cat Flat in Victoria's Alpine national park, four fenced-off areas show a strikingly different ecology, highlighting the damage wrought by more than 2,700 feral horses in the area.
+                    </p>
+                    <div class="project-meta">
+                        <span class="project-year">THE GUARDIAN 2024</span>
+                        <span class="project-medium">Videographer • Journalist • Editor</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mutawintji -->
+            <div class="project-item fade-in-up">
+                <img src="https://freight.cargo.site/t/original/i/13a2f5c8c7e4aab00aa7a4855db9dbee48f1aa9893dafbbf7a4e7f4501dd71f1/Otis-Filley_Photos_website-Format-2112.jpg" 
+                     alt="Mutawintji National Park cultural documentation" 
+                     class="project-background">
+                <div class="project-overlay"></div>
+                <div class="project-content">
+                    <div class="project-category-label">Cultural Documentation</div>
+                    <h2 class="project-title architectural-text">MUTAWINTJI</h2>
+                    <p class="project-subtitle">2022-2024 | Mutawintji (NSW)</p>
+                    <p class="project-description">
+                        Celebrated for its profound cultural and historical importance, alongside captivating desert vistas and indigenous heritage. Recent events include a commemorative celebration marking 40 years since the significant land handback and a Corroboree echoing the last traditional gathering held on the site a century ago.
+                    </p>
+                    <div class="project-meta">
+                        <span class="project-year">NITV • THE GUARDIAN • 2022-2024</span>
+                        <span class="project-medium">Videographer • Production • Journalism</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Cod and the Economy -->
+            <div class="project-item video-project fade-in-up">
+                <div class="video-container">
+                    <iframe src="https://player.vimeo.com/video/446375576?h=ded4691e68&autoplay=1&muted=1&loop=1&background=1" 
+                            title="The Cod and the Economy">
+                    </iframe>
+                </div>
+                <div class="video-overlay"></div>
+                <div class="project-content">
+                    <div class="project-category-label">Documentary Series</div>
+                    <h2 class="project-title architectural-text">THE COD AND THE ECONOMY</h2>
+                    <p class="project-subtitle">This Is Water | Episode 2</p>
+                    <p class="project-description">
+                        In January 2019, Menindee faced an ecological crisis when hundreds of thousands of fish, including the iconic Murray Cod, died in the Darling-Baaka River. This episode follows local volunteers as they rescue surviving fish and explores how financial systems prioritize irrigation at the expense of river health.
+                    </p>
+                    <div class="project-meta">
+                        <span class="project-year">COLLABORATIVE PRODUCTION WITH DAN SCHULZ • 2020</span>
+                        <span class="project-medium">Video Production • Editing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floodplain Harvesting -->
+            <div class="project-item fade-in-up">
+                <img src="https://freight.cargo.site/t/original/i/2eb435060ada8a782f98bff5db236a6e1bdf60362e9cf0d234242e529c176798/Irrigators-pump-water-from-darling-Baaka-river-into-personal-storages-near-Bourke_2.jpg" 
+                     alt="Irrigators pumping water from Darling-Baaka River" 
+                     class="project-background">
+                <div class="project-overlay"></div>
+                <div class="project-content">
+                    <div class="project-category-label">Environmental Investigation</div>
+                    <h2 class="project-title architectural-text">FLOODPLAIN HARVESTING</h2>
+                    <p class="project-subtitle">2022 | Menindee (NSW)</p>
+                    <p class="project-description">
+                        Documents obtained in Parliament detail email exchanges between public servants within the Department of Planning and Environment suggesting internal conflict on how to comply with legal obligations to ensure that a fair share of water reaches downstream communities.
+                    </p>
+                    <div class="project-meta">
+                        <span class="project-year">BARRIER TRUTH • 2022</span>
+                        <span class="project-medium">Journalist</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fighting to Save Public Housing -->
+            <div class="project-item video-project fade-in-up">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/br4pMS9-0po?si=8gb7cV61KZjXa9Pn&autoplay=1&mute=1&loop=1&controls=0" 
+                            title="Fighting to Save Public Housing">
+                    </iframe>
+                </div>
+                <div class="video-overlay"></div>
+                <div class="project-content">
+                    <div class="project-category-label">Social Documentary</div>
+                    <h2 class="project-title architectural-text">FIGHTING TO SAVE PUBLIC HOUSING</h2>
+                    <p class="project-description">
+                        Documenting community resistance and the human impact of urban development pressures on Melbourne's public housing estates. A story of displacement, community solidarity, and the fight for housing justice.
+                    </p>
+                    <div class="project-meta">
+                        <span class="project-year">THE GREENS • 2024</span>
+                        <span class="project-medium">Videographer • Editor</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menindee Floods -->
+            <div class="project-item fade-in-up">
+                <img src="https://freight.cargo.site/t/original/i/131953df813b7dd8b4a7b1b05eafcd18ec72c71f8900802363d930661d590c31/Otis-Filley_Photos_website-Format-214.jpg" 
+                     alt="Menindee floods documentation" 
+                     class="project-background">
+                <div class="project-overlay"></div>
+                <div class="project-content">
+                    <div class="project-category-label">Environmental Documentation</div>
+                    <h2 class="project-title architectural-text">MENINDEE FLOODS</h2>
+                    <p class="project-subtitle">2022 | Menindee (NSW)</p>
+                    <p class="project-description">
+                        In late 2022, Menindee experienced flooding as part of the ongoing pattern of changes in the Darling-Baaka River. These fluctuations underscore the difficulties faced by river-dependent communities as they navigate a constantly changing environment.
+                    </p>
+                    <div class="project-meta">
+                        <span class="project-year">THE GUARDIAN • 2022</span>
+                        <span class="project-medium">Journalist • Photography</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wilcannia Covid Crisis -->
+            <div class="project-item video-project fade-in-up">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/TpqTP9wOCK0?autoplay=1&mute=1&loop=1&controls=0" 
+                            title="Roo hunters deliver kangaroo meat to mob in Wilcannia">
+                    </iframe>
+                </div>
+                <div class="video-overlay"></div>
+                <div class="project-content">
+                    <div class="project-category-label">Community Crisis Documentation</div>
+                    <h2 class="project-title architectural-text">WILCANNIA COVID CRISIS</h2>
+                    <p class="project-subtitle">2021-2023 | Wilcannia (NSW)</p>
+                    <p class="project-description">
+                        With a strong connection to the community, documenting the challenges and impact of the Covid-19 pandemic on residents of Wilcannia, highlighting housing crisis issues and community support initiatives.
+                    </p>
+                    <div class="project-meta">
+                        <span class="project-year">NITV • NETWORK 10 • 2021-2023</span>
+                        <span class="project-medium">Videographer • Production • Interviews</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Art Legacy of Broken Hill -->
+            <div class="project-item text-project fade-in-up">
+                <div class="project-content">
+                    <div class="project-category-label">Cultural Politics</div>
+                    <h2 class="project-title architectural-text">ART LEGACY OF BROKEN HILL</h2>
+                    <p class="project-subtitle">2022-2023 | Broken Hill (NSW)</p>
+                    <p class="project-description">
+                        The curator, gallery manager and two other senior staff resign from Broken Hill's art gallery as the council exerts its influence over what constitutes 'local' art. A $35,000 rebranding effort to elevate the gallery's market position was abandoned by Council in favor of reverting to its 2002 identity.
+                    </p>
+                    <div class="project-meta">
+                        <span class="project-year">THE GUARDIAN • BARRIER TRUTH • 2022-2023</span>
+                        <span class="project-medium">Journalist</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tending Toxicity -->
+            <div class="project-item fade-in-up">
+                <img src="https://freight.cargo.site/t/original/i/cf9a9ec73f31cb0534d0c9ae239d7c816ec41e967699d474a745372ffdb74a49/Menindee-Lake-filling-2020_2-3.jpg" 
+                     alt="Menindee Lake environmental installation documentation" 
+                     class="project-background">
+                <div class="project-overlay"></div>
+                <div class="project-content">
+                    <div class="project-category-label">Art Installation • FELTspace</div>
+                    <h2 class="project-title architectural-text">TENDING TOXICITY</h2>
+                    <p class="project-subtitle">FELTspace Adelaide 2022</p>
+                    <p class="project-description">
+                        A multimedia installation exploring environmental contamination and community response through immersive media. The work examines how communities adapt to and resist environmental degradation, using the Menindee Lake system as a case study.
+                    </p>
+                    <div class="project-meta">
+                        <span class="project-year">FILM BY OTIS FILLEY AND DAN SCHULZ • 2022</span>
+                        <span class="project-medium">Installation • Video • Sound</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Links Section -->
+            <div class="project-item links-project fade-in-up">
+                <div class="project-content" style="max-width: 100%; text-align: center;">
+                    <div class="project-category-label">Additional Work</div>
+                    <h2 class="project-title architectural-text">JOURNALISM & DOCUMENTARY PROJECTS</h2>
+                    <div class="links-grid">
+                        <div class="links-category">
+                            <h3>Environmental</h3>
+                            <ul>
+                                <li><a href="#">Menindee Fish Kills (2023)</a></li>
+                                <li><a href="#">Murray-Darling Basin Reports</a></li>
+                                <li><a href="#">Water Policy Investigations</a></li>
+                            </ul>
+                        </div>
+                        <div class="links-category">
+                            <h3>Community</h3>
+                            <ul>
+                                <li><a href="#">Youth Ideas Lab (2021)</a></li>
+                                <li><a href="#">Indigenous Cultural Documentation</a></li>
+                                <li><a href="#">Regional Development Stories</a></li>
+                            </ul>
+                        </div>
+                        <div class="links-category">
